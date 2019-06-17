@@ -15,15 +15,19 @@ int graphCost[8][8] = {
 };
 
 //Function	:printHead()
-//Purpose	:
-//Parameters:
-//Returns	:
+//Purpose	:prints information to console
+//Parameters:none
+//Returns	:none
 void printHead() {
 	cout << "Brendon King" << endl;
 	cout << "Project 7" << endl;
 	cout << "6/16/2019" << endl << endl;
 }
 
+//Function	:getAirportIndex()
+//Purpose	:converts string value to integer for purposes of pairing
+//Parameters:string airport
+//Returns	:int value
 int getAirportIndex(string airport) {
 	if (airport == "SFA")
 	{
@@ -59,6 +63,10 @@ int getAirportIndex(string airport) {
 	}
 }
 
+//Function	:getAirportName()
+//Purpose	:converts int value to string for purposes of printing to console
+//Parameters:int n
+//Returns	:string airport
 string getAirportName(int n) {
 	switch (n)
 	{
@@ -83,11 +91,19 @@ string getAirportName(int n) {
 	}
 }
 
+//Function	:printDirectFlights()
+//Purpose	:driver function that serves information to console cleanly
+//Parameters:Edge edges
+//Returns	:none
 void printDirectFlights(Edge edges) {
 	Edge temp = edges;
 	cout << getAirportName(temp.src) << "\t" << getAirportName(temp.dest) << "\t" << temp.mile << "\t" << temp.cost << endl;
 }
 
+//Function	:minimumDist()
+//Purpose	:finds minimum distance between edges via Dijkstra's Algorithm.
+//Parameters:int dist array bool dset array
+//Returns	:int distance
 int minimumDist(int dist[], bool Dset[])   
 {
 	int min = INT_MAX, index;                 
@@ -102,6 +118,10 @@ int minimumDist(int dist[], bool Dset[])
 	return index;
 }
 
+//Function	:findShortestPath()
+//Purpose	:runs Dijkstra's algorithm on two graphs to find the shortest path between nodes
+//Parameters:graph, graph2, string airport
+//Returns	:none
 void findShortestPath(int graph[vertex][vertex], int graph2[vertex][vertex], string airport) {
 	int src = getAirportIndex(airport);
 	int distMile[vertex];
