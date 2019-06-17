@@ -157,7 +157,7 @@ int main()
 	printHead();
 	while (userInput != 'n')
 	{
-		cout << "Enter text file name: ";
+		cout << "\nEnter text file name: ";
 		cin >> fileName;
 		textFile.open(fileName);
 		while (textFile.fail())
@@ -198,6 +198,15 @@ int main()
 		cout << "\nEnter Airport: ";
 		cin >> userInputString;
 		findShortestPath(graphCost, graphMile, userInputString);
+		cout << "\nRun again? Type \"n\" to quit: ";
+		cin >> userInput;
+		int graphMile[8][8] = {
+	{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},
+		};
+		int graphCost[8][8] = {
+			{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},
+		};
+		count = 0;
 	}
 	return 0;
 }
