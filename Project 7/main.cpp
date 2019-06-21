@@ -118,6 +118,8 @@ int minimumDist(int dist[], bool Dset[])
 	return index;
 }
 
+
+
 //Function	:findShortestPath()
 //Purpose	:runs Dijkstra's algorithm on two graphs to find the shortest path between nodes
 //Parameters:graph, graph2, string airport
@@ -128,8 +130,10 @@ void findShortestPath(int graph[vertex][vertex], int graph2[vertex][vertex], str
 	bool dsetMile[vertex];
 	int distCost[vertex];
 	bool dsetCost[vertex];
+	int parent[vertex];
 	for (int i = 0; i < vertex; i++)                    
 	{
+		parent[i] = INT_MAX;
 		distMile[i] = INT_MAX;
 		dsetMile[i] = false;
 	}
@@ -147,17 +151,20 @@ void findShortestPath(int graph[vertex][vertex], int graph2[vertex][vertex], str
 		for (int v = 0; v < vertex; v++)	
 		{
 			if (!dsetMile[v] && graph[u][v] && distMile[u] != INT_MAX && distMile[u] + graph[u][v] < distMile[v]) {
+				parent[v] = u;
 				distMile[v] = distMile[u] + graph[u][v];
 				distCost[v] = distCost[u] + graph2[u][v];
 			}
 		}
 	}
-	cout << "\nDestination\tCost\t\Miles\t" << endl;
+	cout << "\nDestination\tCost\t\Miles" << endl;
 	for (int i = 0; i < vertex; i++)                       
 	{
-
+		if (i == src)
+		{
+			continue;
+		}
 		cout << getAirportName(i) << "\t\t" << distMile[i] << "\t" << distCost[i] << endl;
-		
 	}
 }
 
